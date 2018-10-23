@@ -1,4 +1,4 @@
-package com.seriabov.fintecharch;
+package com.seriabov.fintecharch.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +9,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.seriabov.fintecharch.AppDelegate;
+import com.seriabov.fintecharch.R;
+import com.seriabov.fintecharch.model.CoinInfo;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
-
-import java.util.List;
 
 /*
  * TODO:

@@ -1,4 +1,4 @@
-package com.seriabov.fintecharch;
+package com.seriabov.fintecharch.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.seriabov.fintecharch.R;
+import com.seriabov.fintecharch.model.CoinInfo;
 
 import java.util.ArrayList;
 import java.util.List;

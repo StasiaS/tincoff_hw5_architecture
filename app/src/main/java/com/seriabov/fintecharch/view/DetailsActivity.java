@@ -1,4 +1,4 @@
-package com.seriabov.fintecharch;
+package com.seriabov.fintecharch.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
+import com.seriabov.fintecharch.R;
+import com.seriabov.fintecharch.model.CoinInfo;
 
 import java.text.DateFormat;
 import java.util.Date;

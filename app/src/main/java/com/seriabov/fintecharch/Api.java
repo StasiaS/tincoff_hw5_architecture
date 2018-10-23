@@ -1,9 +1,11 @@
 package com.seriabov.fintecharch;
 
-import retrofit2.Call;
-import retrofit2.http.GET;
+import com.seriabov.fintecharch.model.CoinInfo;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
 
 public interface Api {
 
