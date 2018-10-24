@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
@@ -50,21 +49,13 @@ public class DetailsActivity extends AppCompatActivity {
         price.setText(getString(R.string.price_format, info.getPriceUsd()));
         TextView change7d = findViewById(R.id.change_value_7d);
         change7d.setText(getString(R.string.percent_format, info.getPercentChange7d()));
-        ViewUtils.setColorPercentChange7d(info, change7d, this);
+        ViewUtils.setColorPercentChange(info.getPercentChange7d(), change7d, this);
         TextView change24h = findViewById(R.id.change_value_24h);
         change24h.setText(getString(R.string.percent_format, info.getPercentChange24h()));
-        if (info.getPercentChange24h() > 0) {
-            change24h.setTextColor(ContextCompat.getColor(this, R.color.green700));
-        } else {
-            change24h.setTextColor(ContextCompat.getColor(this, R.color.red700));
-        }
+        ViewUtils.setColorPercentChange(info.getPercentChange24h(), change24h, this);
         TextView change1h = findViewById(R.id.change_value_1h);
         change1h.setText(getString(R.string.percent_format, info.getPercentChange1h()));
-        if (info.getPercentChange1h() > 0) {
-            change1h.setTextColor(ContextCompat.getColor(this, R.color.green700));
-        } else {
-            change1h.setTextColor(ContextCompat.getColor(this, R.color.red700));
-        }
+        ViewUtils.setColorPercentChange(info.getPercentChange1h(), change1h, this);
         TextView marketCap = findViewById(R.id.market_cap_value);
         marketCap.setText(getString(R.string.price_format, info.getMarketCapUsd()));
         TextView lastUpdate = findViewById(R.id.last_update_value);

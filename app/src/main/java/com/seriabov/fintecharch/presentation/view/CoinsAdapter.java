@@ -75,7 +75,7 @@ public class CoinsAdapter extends RecyclerView.Adapter<CoinsAdapter.CoinsViewHol
             coinName.setText(info.getName());
             coinPrice.setText(context.getString(R.string.price_format, info.getPriceUsd()));
             coinChange.setText(context.getString(R.string.percent_format, info.getPercentChange7d()));
-            ViewUtils.setColorPercentChange7d(info, coinChange, context);
+            ViewUtils.setColorPercentChange(info.getPercentChange7d(), coinChange, context);
             String logoUrl = context.getString(R.string.coin_logo_url, info.getSymbol().toLowerCase());
             Glide.with(itemView)
                     .load(logoUrl)
