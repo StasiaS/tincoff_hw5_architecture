@@ -1,5 +1,6 @@
 package com.seriabov.fintecharch.presentation.view;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.seriabov.fintecharch.AppDelegate;
 import com.seriabov.fintecharch.R;
 import com.seriabov.fintecharch.data.model.CoinInfo;
+import com.seriabov.fintecharch.presentation.viewmodel.ListCoinsViewModel;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import timber.log.Timber;
 
 /*
@@ -34,6 +32,8 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListCoinsViewModel viewModel;
+
     private CoinsAdapter adapter;
     private View errorView;
     private View contentView;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewModel = ViewModelProviders.of(this).get(ListCoinsViewModel.class);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -52,7 +53,17 @@ public class MainActivity extends AppCompatActivity {
         loadingView = findViewById(R.id.loading_layout);
         initRecyclerView();
 
-        getData();
+        viewModel.getApiResponse().observe(this, apiResponse -> {
+            if (apiResponse.getError() != null) {
+                showError(apiResponse.getError());
+            } else {
+                setData(apiResponse.getCoinInfos());
+            }
+        });
+
+        if (viewModel.getApiResponse().getValue() == null) {
+            getData();
+        }
     }
 
     @Override
@@ -75,21 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getData() {
         loadingView.setVisibility(View.VISIBLE);
-        AppDelegate.from(this)
-                .getApiService()
-                .getCoinsList()
-                .enqueue(new Callback<List<CoinInfo>>() {
-                    @Override
-                    public void onResponse(Call<List<CoinInfo>> call, Response<List<CoinInfo>> response) {
-                        setData(response.body());
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<CoinInfo>> call, Throwable t) {
-                        showError(t);
-
-                    }
-                });
+        viewModel.loadCoinsInfo();
     }
 
     private void setData(List<CoinInfo> data) {

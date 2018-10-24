@@ -1,7 +1,6 @@
 package com.seriabov.fintecharch;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.seriabov.fintecharch.data.Api;
@@ -14,11 +13,7 @@ import timber.log.Timber;
 
 public class AppDelegate extends Application {
 
-    private Api apiService;
-
-    public static AppDelegate from(Context context) {
-        return (AppDelegate) context.getApplicationContext();
-    }
+    private static Api apiService;
 
     @Override
     public void onCreate() {
@@ -29,7 +24,7 @@ public class AppDelegate extends Application {
         }
     }
 
-    public Api getApiService() {
+    public static Api getApiService() {
         return apiService;
     }
 
