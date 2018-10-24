@@ -1,6 +1,6 @@
-package com.seriabov.fintecharch;
+package com.seriabov.fintecharch.data;
 
-import com.seriabov.fintecharch.model.CoinInfo;
+import com.seriabov.fintecharch.data.model.CoinInfo;
 
 import java.util.List;
 

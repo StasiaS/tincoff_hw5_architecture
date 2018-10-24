@@ -1,4 +1,4 @@
-package com.seriabov.fintecharch.view;
+package com.seriabov.fintecharch.presentation.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.seriabov.fintecharch.AppDelegate;
 import com.seriabov.fintecharch.R;
-import com.seriabov.fintecharch.model.CoinInfo;
+import com.seriabov.fintecharch.data.model.CoinInfo;
 
 import java.util.List;
 

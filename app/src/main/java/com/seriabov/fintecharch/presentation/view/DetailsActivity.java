@@ -1,4 +1,4 @@
-package com.seriabov.fintecharch.view;
+package com.seriabov.fintecharch.presentation.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.seriabov.fintecharch.R;
-import com.seriabov.fintecharch.model.CoinInfo;
+import com.seriabov.fintecharch.data.model.CoinInfo;
+import com.seriabov.fintecharch.utils.ViewUtils;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -49,11 +50,7 @@ public class DetailsActivity extends AppCompatActivity {
         price.setText(getString(R.string.price_format, info.getPriceUsd()));
         TextView change7d = findViewById(R.id.change_value_7d);
         change7d.setText(getString(R.string.percent_format, info.getPercentChange7d()));
-        if (info.getPercentChange7d() > 0) {
-            change7d.setTextColor(ContextCompat.getColor(this, R.color.green700));
-        } else {
-            change7d.setTextColor(ContextCompat.getColor(this, R.color.red700));
-        }
+        ViewUtils.setColorPercentChange7d(info, change7d, this);
         TextView change24h = findViewById(R.id.change_value_24h);
         change24h.setText(getString(R.string.percent_format, info.getPercentChange24h()));
         if (info.getPercentChange24h() > 0) {

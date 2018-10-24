@@ -1,4 +1,4 @@
-package com.seriabov.fintecharch.model;
+package com.seriabov.fintecharch.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

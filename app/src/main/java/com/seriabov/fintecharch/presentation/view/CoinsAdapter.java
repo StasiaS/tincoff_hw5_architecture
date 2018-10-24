@@ -1,8 +1,7 @@
-package com.seriabov.fintecharch.view;
+package com.seriabov.fintecharch.presentation.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.seriabov.fintecharch.R;
-import com.seriabov.fintecharch.model.CoinInfo;
+import com.seriabov.fintecharch.data.model.CoinInfo;
+import com.seriabov.fintecharch.utils.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,11 +75,7 @@ public class CoinsAdapter extends RecyclerView.Adapter<CoinsAdapter.CoinsViewHol
             coinName.setText(info.getName());
             coinPrice.setText(context.getString(R.string.price_format, info.getPriceUsd()));
             coinChange.setText(context.getString(R.string.percent_format, info.getPercentChange7d()));
-            if (info.getPercentChange7d() > 0) {
-                coinChange.setTextColor(ContextCompat.getColor(context, R.color.green700));
-            } else {
-                coinChange.setTextColor(ContextCompat.getColor(context, R.color.red700));
-            }
+            ViewUtils.setColorPercentChange7d(info, coinChange, context);
             String logoUrl = context.getString(R.string.coin_logo_url, info.getSymbol().toLowerCase());
             Glide.with(itemView)
                     .load(logoUrl)

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.seriabov.fintecharch.data.Api;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
